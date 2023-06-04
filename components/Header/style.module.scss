@@ -1,0 +1,40 @@
+.Header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+
+  z-index: 100;
+  padding: 16px;
+  background-color: white;
+  display: flex;
+  gap: 8px;
+  height: 80px;
+}
+
+.Logo {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+
+  color: white;
+  background-color: red;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bolder;
+  font-size: 28px;
+  line-height: 28px;
+}
+
+.User {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}

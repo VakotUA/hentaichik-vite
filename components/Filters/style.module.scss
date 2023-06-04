@@ -1,0 +1,19 @@
+.Dropdown {
+  margin-top: 32px;
+
+  @media (max-width: 800px) {
+    position: fixed;
+    margin-top: 0;
+    top: 80px;
+    left: 0;
+
+    $height: calc(100vh - 80px);
+
+    max-height: $height;
+    min-height: $height;
+    height: $height;
+    border-radius: 0;
+
+    transform: scale(1) !important;
+  }
+}

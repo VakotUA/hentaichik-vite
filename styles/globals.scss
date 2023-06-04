@@ -1,0 +1,31 @@
+@import '@styles/reset.scss';
+@import '@styles/variables.scss';
+
+:root {
+  --tag-category-color-0: hsl(201, 87%, 48%); // general
+  --tag-category-color-1: #ff8a72; // artis
+  --tag-category-color-3: #9688ff; // copyright
+  --tag-category-color-4: #2fc643; // character
+  --tag-category-color-5: #ead084; // meta
+}
+
+html,
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  height: 100vh;
+
+  color: $grayscale_3;
+  background-color: $grayscale_12;
+}

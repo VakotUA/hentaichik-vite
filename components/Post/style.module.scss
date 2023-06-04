@@ -1,0 +1,76 @@
+.Post {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  // padding-bottom: 32px;
+  cursor: zoom-in;
+}
+
+.Menu {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  padding: 8px;
+  gap: 8px;
+  z-index: 3;
+
+  .Button {
+    opacity: 0.75;
+    width: 32px;
+    height: 32px;
+    transition: opacity 0.3s;
+    font-size: 20px;
+
+    &:hover {
+      opacity: 1;
+      background-color: white;
+    }
+  }
+}
+
+.Focus {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: white;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.Image {
+  overflow: hidden;
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 16px;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  & .Focus,
+  & .Menu {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+
+  &:hover .Focus,
+  &:hover .Menu {
+    visibility: visible;
+    opacity: 1;
+  }
+}
