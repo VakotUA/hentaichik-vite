@@ -2,30 +2,27 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  // padding-bottom: 32px;
   cursor: zoom-in;
+
+  &.Selected > .Image {
+    outline: 4px solid gold;
+  }
 }
 
 .Menu {
-  position: absolute;
-  right: 0;
-  bottom: 0;
   display: flex;
-  padding: 8px;
-  gap: 8px;
-  z-index: 3;
+  align-items: center;
+  justify-content: space-between;
 
-  .Button {
-    opacity: 0.75;
-    width: 32px;
-    height: 32px;
-    transition: opacity 0.3s;
-    font-size: 20px;
+  width: 100%;
 
-    &:hover {
-      opacity: 1;
-      background-color: white;
-    }
+  margin-top: 8px;
+
+  h4 {
+    line-height: 32px;
+    background-color: white;
+    border-radius: 24px;
+    padding-inline: 12px;
   }
 }
 

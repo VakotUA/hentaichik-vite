@@ -25,11 +25,13 @@ const Filter: React.FC = () => {
     const params = new URLSearchParams(search)
     const tags = params.get('tags')?.split(';') || []
     dispatch(tagsActions.setTags(tags))
+    window.scrollTo(0, 0)
   }, [location, dispatch])
 
   const handleSelect = (selected: string[]) => {
     const tagsQueryParam = selected.join(';')
-    const newUrl = selected.length === 0 ? '' : `?tags=${tagsQueryParam}`
+    const currentPath = location.pathname
+    const newUrl = selected.length === 0 ? currentPath : `${currentPath}?tags=${tagsQueryParam}`
     navigate(newUrl)
   }
 

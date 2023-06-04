@@ -1,7 +1,8 @@
 import Filters from '@components/Filters'
 import { Button } from '@components/UI/Button'
 import classNames from 'classnames'
-import { AiFillBell, AiFillMessage, AiFillPushpin } from 'react-icons/ai'
+import { AiFillPushpin } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 import style from './style.module.scss'
 
 export interface Props {
@@ -10,20 +11,24 @@ export interface Props {
 }
 
 const Header: React.FC<Props> = (props) => {
+  const navigate = useNavigate()
+
   return (
     <header style={props.style} className={classNames(props.className, style.Header)}>
-      <div className={style.Logo}>H</div>
+      <Button className={style.Logo} onClick={() => navigate('')}>
+        H
+      </Button>
 
       <Filters />
 
       <div className={style.User}>
-        <Button>
+        {/* <Button>
           <AiFillBell />
         </Button>
         <Button>
           <AiFillMessage />
-        </Button>
-        <Button>
+        </Button> */}
+        <Button onClick={() => navigate('favorite')}>
           <AiFillPushpin />
         </Button>
       </div>
