@@ -1,17 +1,11 @@
 import { Post } from '@modules/models/Post'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { REHYDRATE } from 'redux-persist'
 
 export const postsApi = createApi({
   reducerPath: 'postsApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://danbooru.donmai.us',
   }),
-  extractRehydrationInfo(action, { reducerPath }) {
-    if (action.type === REHYDRATE) {
-      return action.payload[reducerPath]
-    }
-  },
   endpoints: (build) => ({
     getPosts: build.query<Post[], { tags: string; limit: number; page: number }>({
       query: ({ tags, limit, page }) => `posts.json?limit=${limit}&page=${page}&tags=${tags}`,
