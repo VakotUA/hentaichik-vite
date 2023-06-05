@@ -1,75 +1,94 @@
+@import '@styles/variables';
+
 .Post {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  cursor: zoom-in;
-
-  &.Selected > .Image {
-    outline: 4px solid gold;
-  }
-}
-
-.Menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  margin-inline: auto;
 
   width: 100%;
+  max-width: 1000px;
+  min-height: 500px;
 
-  margin-top: 8px;
+  background-color: white;
+  border-radius: 32px;
 
-  h4 {
-    line-height: 32px;
-    background-color: white;
-    border-radius: 24px;
-    padding-inline: 12px;
-  }
-}
+  overflow: hidden;
 
-.Focus {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 48px;
-  color: white;
-  cursor: pointer;
-  pointer-events: none;
+
+  > div {
+    max-width: 500px;
+    flex: 1;
+  }
+
+  @media (max-width: 1080px) {
+    flex-direction: column;
+    max-width: 700px;
+    height: auto;
+
+    > div {
+      max-width: 700px;
+      flex: 1;
+    }
+  }
 }
 
 .Image {
   overflow: hidden;
-  position: relative;
-
-  width: 100%;
-  height: 100%;
-
-  border-radius: 16px;
-
-  background-color: white;
 
   > img {
     width: 100%;
     height: 100%;
-    z-index: 1;
+    object-fit: cover;
+  }
+}
+
+.Description {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.Controls {
+  display: flex;
+}
+
+.Info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .Title,
+  .Value {
+    position: relative;
+
+    font-size: 18px;
+    font-weight: 500;
+    color: $grayscale_6;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    @media (max-width: 600px) {
+      font-size: 16px;
+    }
   }
 
-  & .Focus,
-  & .Menu {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s;
+  .Inline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
   }
 
-  &:hover .Focus,
-  &:hover .Menu {
-    visibility: visible;
-    opacity: 1;
+  .Block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 }

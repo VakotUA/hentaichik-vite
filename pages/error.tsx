@@ -2,7 +2,7 @@ import React from 'react'
 
 const ErrorPage: React.FC = () => {
   return (
-    <div
+    <section
       style={{
         width: '100vw',
         height: '100vh',
@@ -15,7 +15,7 @@ const ErrorPage: React.FC = () => {
     >
       <h1>X_X</h1>
       <h2>Page not found</h2>
-    </div>
+    </section>
   )
 }
 

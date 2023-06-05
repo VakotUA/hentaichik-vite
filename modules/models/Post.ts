@@ -1,3 +1,19 @@
+interface MediaAsset {
+  id: number
+  duration: number | null
+  file_ext: string
+  file_key: string
+  file_size: number
+  image_height: number
+  image_width: number
+  is_public: boolean
+  md5: string
+  pixel_hash: string
+  status: string
+  created_at: Date | string | null
+  updated_at: Date | string | null
+}
+
 export interface Post {
   id: number
   uploader_id: number

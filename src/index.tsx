@@ -3,6 +3,7 @@ import { persistor, store } from '@modules/store/store'
 import ErrorPage from '@pages/error'
 import FavoritePage from '@pages/favorite'
 import MainPage from '@pages/index'
+import SinglePostPage from '@pages/post'
 import '@styles/globals.scss'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           <Main>
             <Routes>
               <Route path="/" element={<MainPage />} />
+              <Route path="/post/:id" element={<SinglePostPage />} />
               <Route path="/favorite" element={<FavoritePage />} />
               <Route path="/404" element={<ErrorPage />} />
               <Route path="*" element={<Navigate to="/" />} />

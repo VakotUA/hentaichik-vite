@@ -1,7 +1,7 @@
 import List from '@components/List'
-import Post from '@components/Post'
+import PostCard from '@components/PostCard'
 import { useGetPostsQuery } from '@modules/api/Post'
-import { Post as IPost } from '@modules/models/Post'
+import { Post } from '@modules/models/Post'
 import { useAppSelector } from '@modules/store/hooks'
 import { useEffect, useState } from 'react'
 
@@ -9,7 +9,7 @@ const Posts: React.FC = () => {
   const tags = useAppSelector((state) => state.tags.value)
 
   const [page, setPage] = useState<number>(1)
-  const [posts, setPosts] = useState<IPost[]>([])
+  const [posts, setPosts] = useState<Post[]>([])
 
   const [tagsString, setTagsString] = useState<string>('')
 
@@ -24,9 +24,7 @@ const Posts: React.FC = () => {
 
     setPosts((prevPosts) => [
       ...prevPosts,
-      ...data.filter(
-        (post: IPost) => post.file_url || post.large_file_url || post.preview_file_url
-      ),
+      ...data.filter((post: Post) => post.file_url || post.large_file_url || post.preview_file_url),
     ])
   }, [data])
 
@@ -40,13 +38,13 @@ const Posts: React.FC = () => {
 
   if (error) console.error(error)
 
-  if (isLoading) return <h3 style={{ marginTop: 80, padding: 16 }}>Loading...</h3>
+  if (isLoading) return <h3>Loading...</h3>
 
   return (
     <List
       data={posts}
       next={() => setPage((prev) => prev + 1)}
-      render={(item: IPost) => <Post post={item} />}
+      render={(item: Post) => <PostCard post={item} />}
     />
   )
 }

@@ -21,7 +21,11 @@ export const postsApi = createApi({
         return { data: responses.map((response) => response.data as Post) }
       },
     }),
+    getPost: build.query<Post, number>({
+      query: (id) => `posts/${id}.json`,
+    }),
   }),
 })
 
-export const { useGetPostsQuery, useGetPostsCountQuery, useGetPostsByIDsQuery } = postsApi
+export const { useGetPostsQuery, useGetPostsCountQuery, useGetPostsByIDsQuery, useGetPostQuery } =
+  postsApi
