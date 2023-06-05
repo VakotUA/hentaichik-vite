@@ -5,30 +5,35 @@ import { Post as IPost } from '@modules/models/Post'
 import { useAppSelector } from '@modules/store/hooks'
 import { useEffect, useState } from 'react'
 
-// BUG: posts not loaded on page or tags update sometimes
 const Posts: React.FC = () => {
   const tags = useAppSelector((state) => state.tags.value)
 
   const [page, setPage] = useState<number>(1)
   const [posts, setPosts] = useState<IPost[]>([])
 
+  const [tagsString, setTagsString] = useState<string>('')
+
   const { data, error, isLoading } = useGetPostsQuery({
-    tags: tags ? tags.join(' ') : '',
+    tags: tagsString,
     limit: 32,
     page: page,
   })
 
   useEffect(() => {
-    if (data)
-      setPosts((current) => [
-        ...current,
-        ...data
-          // remove if no file
-          .filter((post) => post.file_url || post.large_file_url || post.preview_file_url),
-      ])
+    if (!data) return
+
+    setPosts((prevPosts) => [
+      ...prevPosts,
+      ...data.filter(
+        (post: IPost) => post.file_url || post.large_file_url || post.preview_file_url
+      ),
+    ])
   }, [data])
 
   useEffect(() => {
+    if ((tags ? tags.join(' ') : '') == tagsString) return
+
+    setTagsString(tags ? tags.join(' ') : '')
     setPosts([])
     setPage(1)
   }, [tags])

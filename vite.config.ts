@@ -12,6 +12,5 @@ export default defineConfig({
       '@pages': '/pages',
     },
   },
-  base: '/hentaichik-vite',
   plugins: [react()],
 })

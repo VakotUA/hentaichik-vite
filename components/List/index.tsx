@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import Masonry from 'react-smart-masonry-layout'
 import style from './style.module.scss'
@@ -9,20 +8,9 @@ export interface Props {
   next: (...args: any) => void
 }
 
-// BUG: posts not loaded on page or tags update sometimes
-const Posts: React.FC<Props> = ({ data, render, next }) => {
-  useEffect(() => {
-    next()
-  }, [])
-
+const List: React.FC<Props> = ({ data, render, next }) => {
   return (
-    <InfiniteScroll
-      hasMore
-      next={next}
-      dataLength={data.length || 0}
-      loader={<h3>Loading...</h3>}
-      endMessage={<h3>That's all</h3>}
-    >
+    <InfiniteScroll hasMore next={next} dataLength={data.length || 0} loader>
       <Masonry
         breakpoints={{
           300: 2,
@@ -46,4 +34,4 @@ const Posts: React.FC<Props> = ({ data, render, next }) => {
   )
 }
 
-export default Posts
+export default List

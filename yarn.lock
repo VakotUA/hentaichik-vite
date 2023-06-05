@@ -986,11 +986,6 @@ lodash.merge@^4.6.2:
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-lodash@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
-  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
-
 loose-envify@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
@@ -1206,10 +1201,10 @@ react-router@6.11.2:
   dependencies:
     "@remix-run/router" "1.6.2"
 
-react-smart-masonry-layout@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/react-smart-masonry-layout/-/react-smart-masonry-layout-1.1.3.tgz#c1f7d41d759455868c1a9d4b8dc74d48f375bea2"
-  integrity sha512-EOgFuuOwGC8+HIti0x8/6PaK/Jo2lfyJdnEZlpoQkaF81aO5yMNDf6krlQBOWgeVzBvhWwqawwd5NOavhNrQkQ==
+react-smart-masonry-layout@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-smart-masonry-layout/-/react-smart-masonry-layout-1.1.4.tgz#7ed66642dc23a2e5c45583261baf123ea0fe232a"
+  integrity sha512-OmMAzfS7BxxvLOTHmrZlikrHfXTSsiyuEBoQW0GqWImObCWB2UmNQoGd00TUzEABtXqx/dJw6GdTEn6VM8CmZA==
 
 react@^18.2.0:
   version "18.2.0"
@@ -1224,13 +1219,6 @@ readdirp@~3.6.0:
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
-
-redux-persist-transform-filter@^0.0.22:
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/redux-persist-transform-filter/-/redux-persist-transform-filter-0.0.22.tgz#181480570a43b5061389991fc43ca52c6d114318"
-  integrity sha512-XtGN7UQ8w7b3qaxQfdYY1UmuYULqIIemD47IWxIyM8AOF48I6C74m9XxA7gQoC2nIi+rz4URi9Mye4fIbHhZPQ==
-  dependencies:
-    lodash "^4.17.21"
 
 redux-persist@^6.0.0:
   version "6.0.0"
