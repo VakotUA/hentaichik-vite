@@ -24,8 +24,16 @@ export const postsApi = createApi({
     getPost: build.query<Post, number>({
       query: (id) => `posts/${id}.json`,
     }),
+    getRandomPost: build.query<Post, void>({
+      query: () => `posts/random.json`,
+    }),
   }),
 })
 
-export const { useGetPostsQuery, useGetPostsCountQuery, useGetPostsByIDsQuery, useGetPostQuery } =
-  postsApi
+export const {
+  useGetPostsQuery,
+  useGetPostsCountQuery,
+  useGetPostsByIDsQuery,
+  useGetPostQuery,
+  useGetRandomPostQuery,
+} = postsApi

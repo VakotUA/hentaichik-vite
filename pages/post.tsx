@@ -11,11 +11,11 @@ const SinglePostPage: React.FC = () => {
   if (error) console.error(error)
 
   if (isLoading) {
-    return <h3 style={{ marginTop: 80, padding: 16 }}>Loading...</h3>
+    return <h3>Loading...</h3>
   }
 
   if (!id || !data || error) {
-    return <h3 style={{ marginTop: 80, padding: 16 }}>{`Post is not exist :(`}</h3>
+    return <h3>{`Post is not exist :(`}</h3>
   }
 
   return (
