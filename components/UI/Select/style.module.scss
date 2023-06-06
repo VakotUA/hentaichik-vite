@@ -33,10 +33,6 @@
     font-size: 16px;
   }
 
-  > input:focus {
-    outline: 4px solid lightskyblue;
-  }
-
   > button {
     position: absolute;
     right: 4px;
@@ -108,9 +104,5 @@
     padding-inline: 16px;
 
     background-color: $grayscale_12;
-
-    > span {
-      margin-right: 4px;
-    }
   }
 }

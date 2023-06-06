@@ -1,17 +1,17 @@
-import List from '@components/List'
-import PostCard from '@components/PostCard'
+import Post from '@components/Post'
+import Posts from '@components/Posts'
 import { useGetPostsByIDsQuery } from '@modules/api/Post'
-import { Post } from '@modules/models/Post'
+import { Post as IPost } from '@modules/models/Post'
 import { useAppSelector } from '@modules/store/hooks'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Favorite: React.FC = () => {
+const FavoritePage: React.FC = () => {
   const favorite = useAppSelector((state) => state.favorite.value)
   const tags = useAppSelector((state) => state.tags.value)
 
   const [page, setPage] = useState<number>(1)
-  const [posts, setPosts] = useState<Post[]>([])
-  const [filtered, setFiltered] = useState<Post[]>([])
+  const [posts, setPosts] = useState<IPost[]>([])
+  const [filtered, setFiltered] = useState<IPost[]>([])
 
   const [fixedFavorite, setFixedFavorite] = useState<number[]>([])
 
@@ -37,15 +37,13 @@ const Favorite: React.FC = () => {
 
   if (isLoading) return <h3>Loading...</h3>
 
-  if (!filtered.length) return <h3>{`Nothing here :(`}</h3>
-
   return (
-    <List
+    <Posts
       data={filtered}
       next={() => setPage((prev) => prev + 1)}
-      render={(item: Post) => <PostCard post={item} />}
+      render={(item: IPost) => <Post post={item} />}
     />
   )
 }
 
-export default Favorite
+export default FavoritePage

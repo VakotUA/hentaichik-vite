@@ -1,12 +1,14 @@
-import Posts from '@components/Posts'
+import LayoutMain from '@components/Layouts/Main'
 import React from 'react'
+import { ScrollRestoration } from 'react-router-dom'
 
-const MainPage: React.FC = () => {
+const Page: React.FC<{ page: React.ReactNode }> = ({ page }) => {
   return (
-    <section>
-      <Posts />
-    </section>
+    <React.Fragment>
+      <ScrollRestoration getKey={(location) => location.key} />
+      <LayoutMain>{page}</LayoutMain>
+    </React.Fragment>
   )
 }
 
-export default MainPage
+export default Page

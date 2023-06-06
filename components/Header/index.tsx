@@ -28,25 +28,29 @@ const Header: React.FC<Props> = (props) => {
 
   return (
     <header style={props.style} className={classNames(props.className, style.Header)}>
-      <Button className={style.Logo} onClick={() => navigate('/')}>
+      <Button
+        className={style.Button}
+        onClick={() => navigate('/')}
+        style={{ background: 'red', color: 'white' }}
+      >
         H
       </Button>
 
       <Filters />
 
-      <div className={style.User}>
-        <Button
-          onClick={() => {
-            setClick((prev) => !prev)
-            refetch()
-          }}
-        >
-          <AiOutlineSync />
-        </Button>
-        <Button onClick={() => navigate('/favorite')}>
-          <AiFillPushpin />
-        </Button>
-      </div>
+      <Button
+        className={style.Button}
+        onClick={() => {
+          setClick((prev) => !prev)
+          refetch()
+        }}
+      >
+        <AiOutlineSync />
+      </Button>
+
+      <Button className={style.Button} onClick={() => navigate('/favorite')}>
+        <AiFillPushpin />
+      </Button>
     </header>
   )
 }

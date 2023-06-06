@@ -1,51 +1,36 @@
-import List from '@components/List'
-import PostCard from '@components/PostCard'
-import { useGetPostsQuery } from '@modules/api/Post'
-import { Post } from '@modules/models/Post'
-import { useAppSelector } from '@modules/store/hooks'
-import { useEffect, useState } from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import Masonry from 'react-smart-masonry-layout'
+import style from './style.module.scss'
 
-const Posts: React.FC = () => {
-  const tags = useAppSelector((state) => state.tags.value)
+export interface Props {
+  data: any[]
+  render: (item: any) => React.ReactNode
+  next: (...args: any) => void
+}
 
-  const [page, setPage] = useState<number>(1)
-  const [posts, setPosts] = useState<Post[]>([])
-
-  const [tagsString, setTagsString] = useState<string>('')
-
-  const { data, error, isLoading } = useGetPostsQuery({
-    tags: tagsString,
-    limit: 32,
-    page: page,
-  })
-
-  useEffect(() => {
-    if (!data) return
-
-    setPosts((prevPosts) => [
-      ...prevPosts,
-      ...data.filter((post: Post) => post.file_url || post.large_file_url || post.preview_file_url),
-    ])
-  }, [data])
-
-  useEffect(() => {
-    if ((tags ? tags.join(' ') : '') == tagsString) return
-
-    setTagsString(tags ? tags.join(' ') : '')
-    setPosts([])
-    setPage(1)
-  }, [tags])
-
-  if (error) console.error(error)
-
-  if (isLoading) return <h3>Loading...</h3>
-
+const Posts: React.FC<Props> = ({ data, render, next }) => {
   return (
-    <List
-      data={posts}
-      next={() => setPage((prev) => prev + 1)}
-      render={(item: Post) => <PostCard post={item} />}
-    />
+    <InfiniteScroll hasMore next={next} dataLength={data.length || 0} loader>
+      <Masonry
+        breakpoints={{
+          300: 2,
+          600: 3,
+          900: 4,
+          1200: 5,
+          1500: 6,
+          1800: 7,
+          2100: 8,
+          2400: 9,
+          2700: 10,
+          3000: 11,
+          3300: 12,
+        }}
+        gutter="16px"
+        className={style.Masonry}
+        source={data}
+        render={(item) => render(item)}
+      />
+    </InfiniteScroll>
   )
 }
 
