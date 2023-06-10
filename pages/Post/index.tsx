@@ -1,4 +1,5 @@
 import { Button } from '@components/UI/Button'
+import { Modal } from '@components/UI/Modal'
 import { Tag } from '@components/UI/Tag'
 import { useGetPostQuery } from '@modules/api/Post'
 import { useAppDispatch, useAppSelector } from '@modules/store/hooks'
@@ -6,7 +7,7 @@ import { favoriteActions } from '@modules/store/reducers/favorite'
 import moment from 'moment'
 import React, { useState } from 'react'
 import { AiFillPushpin, AiOutlineDownload, AiOutlineLink, AiOutlinePushpin } from 'react-icons/ai'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import style from './style.module.scss'
 
 const PostPage: React.FC = () => {
@@ -14,6 +15,7 @@ const PostPage: React.FC = () => {
 
   const { data, isLoading, error } = useGetPostQuery(parseInt(id || ''))
 
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const favorite = useAppSelector((state) => state.favorite.value)
 
@@ -99,7 +101,7 @@ const PostPage: React.FC = () => {
   ]
 
   return (
-    <div>
+    <Modal onClick={() => navigate(-1)} style={{ paddingTop: 80, alignItems: 'flex-start' }}>
       <div className={style.Post} style={{ outline: `${isFavorite ? '4px' : 0} solid gold` }}>
         <div className={style.Image}>
           {loading && <img src={smallImage} alt="small_cover" />}
@@ -147,11 +149,7 @@ const PostPage: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <div style={{ padding: 100 }}>
-        <h1>TODO: add something here to</h1>
-      </div>
-    </div>
+    </Modal>
   )
 }
 

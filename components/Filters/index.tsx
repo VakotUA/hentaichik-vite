@@ -25,7 +25,6 @@ const Filter: React.FC = () => {
     const params = new URLSearchParams(search)
     const tags = params.get('tags')?.split(';') || []
     dispatch(tagsActions.setTags(tags))
-    window.scrollTo(0, 0)
   }, [location, dispatch])
 
   const handleSelect = (selected: string[]) => {

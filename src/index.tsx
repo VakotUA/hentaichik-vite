@@ -16,16 +16,23 @@ const router = createHashRouter([
     path: '/',
     element: <Page page={<MainPage />} />,
     errorElement: <Page page={<ErrorPage />} />,
+    children: [
+      {
+        path: 'post/:id',
+        element: <PostPage />,
+      },
+    ],
   },
   {
-    path: '/favorite',
+    path: 'favorite',
     element: <Page page={<FavoritePage />} />,
     errorElement: <Page page={<ErrorPage />} />,
-  },
-  {
-    path: '/post/:id',
-    element: <Page page={<PostPage />} />,
-    errorElement: <Page page={<ErrorPage />} />,
+    children: [
+      {
+        path: 'post/:id',
+        element: <PostPage />,
+      },
+    ],
   },
 ])
 

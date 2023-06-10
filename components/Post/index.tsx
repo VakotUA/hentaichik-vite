@@ -34,7 +34,7 @@ const Post: React.FC<Props> = (props) => {
       })}
     >
       <NavLink
-        to={generatePath('/post/:id', { id: String(post.id) })}
+        to={generatePath('post/:id', { id: String(post.id) })}
         className={style.Image}
         style={{
           aspectRatio: post.image_width / post.image_height,

@@ -2,6 +2,8 @@
 
 .Post {
   margin-inline: auto;
+  margin-top: 32px;
+  margin-bottom: 32px;
 
   width: 100%;
   max-width: 1000px;
@@ -21,11 +23,24 @@
 
   @media (max-width: 1080px) {
     flex-direction: column;
-    max-width: 700px;
     height: auto;
 
     > div {
       max-width: 700px;
+      flex: 1;
+    }
+  }
+
+  @media (max-width: 764px) {
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 100%;
+
+    border-radius: 0;
+    min-height: calc(100vh - 80px);
+
+    > div {
+      max-width: 100%;
       flex: 1;
     }
   }
@@ -90,6 +105,6 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 16px;
   }
 }

@@ -24,7 +24,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 
-  height: 100vh;
+  min-height: 100vh;
 
   color: $grayscale_3;
   background-color: $grayscale_12;
