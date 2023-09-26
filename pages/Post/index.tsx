@@ -11,25 +11,19 @@ import { useNavigate, useParams } from 'react-router-dom'
 import style from './style.module.scss'
 
 const PostPage: React.FC = () => {
-  const { id } = useParams<{ id: string }>()
-
-  const { data, isLoading, error } = useGetPostQuery(parseInt(id || ''))
-
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
+  const { id } = useParams<{ id: string }>()
+
   const favorite = useAppSelector((state) => state.favorite.value)
+
+  const { data, error } = useGetPostQuery(parseInt(id || ''))
 
   const [loading, setLoading] = useState<boolean>(true)
 
   if (error) console.error(error)
 
-  if (isLoading) {
-    return <h3>Loading...</h3>
-  }
-
-  if (!id || !data || error) {
-    return <h3>{`Post is not exist :(`}</h3>
-  }
+  if (!data) return <h1>-</h1>
 
   const isFavorite = favorite.includes(data.id)
 

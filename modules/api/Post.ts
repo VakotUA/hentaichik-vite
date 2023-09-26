@@ -9,6 +9,11 @@ export const postsApi = createApi({
   endpoints: (build) => ({
     getPosts: build.query<Post[], { tags: string; limit: number; page: number }>({
       query: ({ tags, limit, page }) => `posts.json?limit=${limit}&page=${page}&tags=${tags}`,
+      serializeQueryArgs: ({ endpointName }) => endpointName,
+      merge: (currentCache, newItems) => {
+        currentCache.push(...newItems)
+      },
+      forceRefetch: ({ currentArg, previousArg }) => currentArg !== previousArg,
     }),
     getPostsCount: build.query<number, { tags: string }>({
       query: ({ tags }) => `counts/posts.json?tags=${tags}`,
@@ -20,6 +25,11 @@ export const postsApi = createApi({
         const responses = await Promise.all(promises)
         return { data: responses.map((response) => response.data as Post) }
       },
+      serializeQueryArgs: ({ endpointName }) => endpointName,
+      merge: (currentCache, newItems) => {
+        currentCache.push(...newItems)
+      },
+      forceRefetch: ({ currentArg, previousArg }) => currentArg !== previousArg,
     }),
     getPost: build.query<Post, number>({
       query: (id) => `posts/${id}.json`,
